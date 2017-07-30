@@ -1,0 +1,21 @@
+{
+  "name": "async-rpc",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev_server": "./node_modules/.bin/nodemon  ./example/server.js",
+    "dev_client": "node  ./example/client.js",
+    "precommit": "./node_modules/.bin/eslint --ext .js ./",
+    "prepush": "./node_modules/.bin/eslint --ext .js ./",
+    "eslint_fix": "./node_modules/.bin/eslint --fix  --ext .js ./"
+  },
+  "author": "chenshenhai",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.3.0",
+    "husky": "^0.14.3",
+    "nodemon": "^1.11.0"
+  }
+}

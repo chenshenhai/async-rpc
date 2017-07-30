@@ -13,19 +13,19 @@ const ERROR_CMD = '___ERROR___';
 
 function parseRemoteFunc(cmdName, callbacks, connection){
 
-	return function(){
+  return function(){
     let id = Utils.idGenerator();
   
-		if(typeof arguments[arguments.length - 1] === 'function'){
-			callbacks[id] = arguments[arguments.length - 1];
+    if(typeof arguments[arguments.length - 1] === 'function'){
+      callbacks[id] = arguments[arguments.length - 1];
     } 
 
-		let args = [];
-		for(let ai = 0, al = arguments.length; ai < al; ++ai){
-			if(typeof arguments[ai] !== 'function'){
-				args.push(arguments[ai]);
-			}
-		}
+    let args = [];
+    for(let ai = 0, al = arguments.length; ai < al; ++ai){
+      if(typeof arguments[ai] !== 'function'){
+        args.push(arguments[ai]);
+      }
+    }
 
     let newCmd = Utils.command(cmdName, {id: id, args: args});
     connection.write(newCmd); 
@@ -69,7 +69,7 @@ function parseRemoteFunc(cmdName, callbacks, connection){
       });
     });
     
-	};
+  };
 }
 
 module.exports = class AsyncRPC {

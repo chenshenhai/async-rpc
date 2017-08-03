@@ -10,6 +10,10 @@ module.exports = {
 
   logger: {
     error(){
+      if ( !Array.isArray(arguments) ) {
+        console.log('[Async-RPC-Error]: ', arguments);
+        return;
+      } 
       let args = new Array(arguments.length + 1);
       args.push('[Async-RPC-Error]: ');
       arguments.map(( argItem ) => {

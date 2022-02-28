@@ -40,7 +40,7 @@ function parseRemoteFunc(cmdName, callbacks, connection){
       connection.on('data', function(data){
         try {
           if(buffObj.bufferBytes && buffObj.bufferBytes.length > 0){
-            let tmpBuff = new Buffer(buffObj.bufferBytes.length + data.length);
+            let tmpBuff = Buffer.from(buffObj.bufferBytes.length + data.length);
 
             buffObj.bufferBytes.copy(tmpBuff, 0);
             data.copy(tmpBuff, buffObj.bufferBytes.length);
@@ -107,6 +107,7 @@ module.exports = class AsyncRPC {
       };
 
       connect.on('data', function(data){
+        // console.log(data.toString())
         if(buffObj.bufferBytes && buffObj.bufferBytes.length > 0){
           let tmpBuff = Buffer.from(buffObj.bufferBytes.length + data.length);
 
@@ -194,7 +195,7 @@ module.exports = class AsyncRPC {
 
     connection.on('data', function(data){
       if(buffObj.bufferBytes && buffObj.bufferBytes.length > 0){
-        let tmpBuff = new Buffer(buffObj.bufferBytes.length + data.length);
+        let tmpBuff = Buffer.from(buffObj.bufferBytes.length + data.length);
 
         buffObj.bufferBytes.copy(tmpBuff, 0);
         data.copy(tmpBuff, buffObj.bufferBytes.length);
